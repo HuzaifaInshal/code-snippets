@@ -1,0 +1,1 @@
+If a font is not available in next/font/ then you can add a fonts otf or ttf in following way.

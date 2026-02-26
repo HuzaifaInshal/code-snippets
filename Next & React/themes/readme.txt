@@ -1,0 +1,1 @@
+In order to implement dark themes and light themes or even more themes we can easily use next-themes library.
