@@ -1,0 +1,136 @@
+# 🔤 Custom Fonts in Next.js
+
+If a font is not available in `next/font/`, you can manually add a font's `.otf` or `.ttf` file using `@font-face` in CSS.
+
+---
+
+# 🏗 Setup
+
+Place your font files in the `public/fonts/` folder:
+
+```
+public/
+  fonts/
+    NeueMontreal-Regular.otf
+    NeueMontreal-Italic.otf
+    NeueMontreal-Light.otf
+    NeueMontreal-LightItalic.otf
+    NeueMontreal-Medium.otf
+    NeueMontreal-MediumItalic.otf
+    NeueMontreal-Bold.otf
+    NeueMontreal-BoldItalic.otf
+```
+
+---
+
+# 1️⃣ Declare the Font with `@font-face`
+
+📁 `app/globals.css`
+
+```css
+/* ========================|| Custom font declaration ||======================== */
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+body {
+  font-family: 'Neue Montreal', Arial, Helvetica, sans-serif;
+}
+```
+
+---
+
+# 2️⃣ Use the Font
+
+Once declared in `globals.css`, the font is available everywhere:
+
+```css
+h1 {
+  font-family: 'Neue Montreal', sans-serif;
+  font-weight: 700; /* Bold */
+}
+
+p {
+  font-family: 'Neue Montreal', sans-serif;
+  font-weight: 400; /* Regular */
+}
+```
+
+Or just rely on the `body` declaration to inherit it globally.
+
+---
+
+# 🧠 Format Reference
+
+| File extension | `format()` value  |
+| -------------- | ----------------- |
+| `.otf`         | `'opentype'`      |
+| `.ttf`         | `'truetype'`      |
+| `.woff`        | `'woff'`          |
+| `.woff2`       | `'woff2'` ✅ best  |
+
+> 💡 Prefer `.woff2` when possible — it has the best compression and browser support.
+
+---
+
+# 🏆 Final Result
+
+You now have:
+
+* Full custom typeface loaded from local files
+* All weights and styles (light, regular, medium, bold + italics)
+* Global font applied via `body`
+* Fallback fonts for safety

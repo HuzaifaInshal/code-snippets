@@ -1,34 +1,62 @@
-This folder shows how to implement favicon in Next Application.
+# 🖼 Favicons in Next.js
 
-Start by adding the icon file in public folder.
+This folder shows how to implement favicons in a Next.js application.
 
-Now you can assign directly in html tags like this:
+---
+
+# 🏗 Setup
+
+Place your favicon files in the `public/favs/` folder:
+
 ```
+public/
+  favs/
+    favicon-96x96.png
+    favicon.svg
+    favicon.ico
+    apple-touch-icon.png
+    site.webmanifest
+```
+
+You can generate all favicon sizes for free at [favicon.io](https://favicon.io) or [realfavicongenerator.net](https://realfavicongenerator.net).
+
+---
+
+# 1️⃣ Method 1 — Direct HTML Tags
+
+Add the links directly inside your `<head>` in `layout.tsx`:
+
+```tsx
 <html lang="en">
-      <head>
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favs/favicon-96x96.png"
-          sizes="96x96"
-        />
-        <link rel="icon" type="image/svg+xml" href="/favs/favicon.svg" />
-        <link rel="shortcut icon" href="/favs/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favs/apple-touch-icon.png"
-        />
-        <link rel="manifest" href="/favs/site.webmanifest" />
-      </head>
-      <body>
-          {children}
-      </body>
-    </html>
+  <head>
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favs/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favs/favicon.svg" />
+    <link rel="shortcut icon" href="/favs/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favs/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/favs/site.webmanifest" />
+  </head>
+  <body>
+    {children}
+  </body>
+</html>
 ```
 
-or you can pass it in metadata:
-```
+---
+
+# 2️⃣ Method 2 — Metadata Object (Recommended)
+
+Use Next.js's built-in `Metadata` API in `layout.tsx` or `page.tsx`:
+
+```ts
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -46,5 +74,24 @@ export const metadata: Metadata = {
   },
   manifest: "/favs/site.webmanifest",
 };
-
 ```
+
+---
+
+# 🧠 Which Method to Use?
+
+| Method          | When to use                              |
+| --------------- | ---------------------------------------- |
+| HTML `<head>`   | Fine for static/simple setups            |
+| Metadata object | ✅ Recommended — cleaner, type-safe, Next.js idiomatic |
+
+---
+
+# 🏆 Final Result
+
+You now have:
+
+* Cross-browser favicon support
+* Apple touch icon for iOS home screen
+* Web manifest for PWA support
+* SVG favicon for modern browsers (scales perfectly)
