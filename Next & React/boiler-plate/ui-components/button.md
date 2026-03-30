@@ -15,10 +15,11 @@ import NextLink from "next/link";
 const buttonVariants = cva(
   cn(
     "inline-flex items-center justify-center gap-2 relative",
-    "whitespace-nowrap cursor-pointer rounded-md outline-none focus:outline-primary",
+    "whitespace-nowrap cursor-pointer rounded-md outline-none",
     "font-semibold transition-all duration-200 disabled:cursor-not-allowed data-[externaldisabled=true]:opacity/90",
     "[&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0",
-    "relative overflow-hidden hover:shadow-lg"
+    "relative overflow-hidden",
+    "disabled:opacity-60"
   ),
   {
     variants: {

@@ -21,6 +21,13 @@
   }
 }
 
+@utility flex-* {
+  display: flex;
+  flex-direction: row;
+  gap: --spacing(--value(integer));
+  gap: --value([length], [percentage]);
+}
+
 @utility flex-col-* {
   display: flex;
   flex-direction: column;
